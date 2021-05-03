@@ -17,25 +17,24 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
-import questions.views
-import exams.views
+from questions.views import Question_detail_view, All_question_view, Add_question_view, Update_question_view, Delete_question_view, Category_view, Home_view, Category_create_view
+import quiz.views
 
 urlpatterns = [
-    path("", questions.views.Home_view.as_view(), name='home'),
-    path("question/list", questions.views.All_question_view.as_view(), name='question-list'),
-    path("question/<int:pk>/", questions.views.Question_detail_view.as_view(), name='question-detail'),
-    path("question/create/", questions.views.Add_question_view.as_view(), name='question-create'),
-    path("question/edit/<int:pk>/", questions.views.Update_question_view.as_view(), name='question-edit'),
-    path("question/delete/<int:pk>/", questions.views.Delete_question_view.as_view(), name='question-delete'),
-    path("category/create/", questions.views.Category_create_view.as_view(), name='category-create'),
-    path("category/<str:cats>/", questions.views.Category_view, name='category'),
-    path("exam/<int:pk>/", exams.views.Exam_detail_view.as_view(), name='exam-detail'),
-    path("exam/", exams.views.ExamListView.as_view(),name = 'exam'),
-    path("exam/<int:pk>/edit", exams.views.exam_edit_view, name='exam-edit'),
-    path("exam/<int:pk>/data", exams.views.exam_data_view, name='exam-detail'),
+    path("", Home_view.as_view(), name='home'),
+    path("question/list", All_question_view.as_view(), name='question-list'),
+    path("question/<int:pk>/", Question_detail_view.as_view(), name='question-detail'),
+    path("question/create/", Add_question_view.as_view(), name='question-create'),
+    path("question/edit/<int:pk>/", Update_question_view.as_view(), name='question-edit'),
+    path("question/delete/<int:pk>/", Delete_question_view.as_view(), name='question-delete'),
+    path("category/create/", Category_create_view.as_view(), name='category-create'),
+    path("category/<str:cats>/", Category_view, name='category'),
     path("accounts/", include('django.contrib.auth.urls')),
     path("accounts/", include('accounts.urls')),
     path('admin/', admin.site.urls),
+    path("exam/", quiz.views.QuizListView.as_view(),name = 'exam'),
+    path("exam/<int:pk>/", quiz.views.Quiz_detail_view.as_view(), name='exam-detail'),
+    path("exam/<int:pk>/data", quiz.views.Quiz_data_view, name='exam-detail'),
 ]
 
 if settings.DEBUG:

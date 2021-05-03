@@ -11,7 +11,7 @@ EL
 <hr>
 {% for obj in object_list %}
 
-  <a href='{{obj.pk}}'>{{obj.name}} - {{obj.number_of_questions}} questions</a>
+  <a href='{{obj.pk}}'>{{obj.title}} - {{obj.description}} questions</a>
     <hr>
 
 {% endfor %}

@@ -15,9 +15,12 @@
 <body>
  <div class="container mt-sm-5 my-1">
     <div class="question ml-sm-5 pl-sm-5 pt-2">
-        <div class="py-2 h5"><b>{{ exam.pk }}.  {{ exam.name }}
+        <div class="py-2 h5"><b>{{ quiz.pk }}.  {{ quiz.title }}
         <hr>
-        Number of question: {{exam.number_of_questions}}
+        Description: {{quiz.description}}
+            <br>
+            <br>
+        Number of questions : {{quiz.max_questions}}
         <hr>
             <a href='data'>Start</a>
             &ensp;&ensp;

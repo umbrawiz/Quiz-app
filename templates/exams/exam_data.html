@@ -38,6 +38,12 @@ Hi
                         <input type="radio" class="ans" id="rightAnswer" name="choice" value="{{ question.rightAnswer }}">
                         <label for="a1">{{ question.rightAnswer }}</label>
 
+                        <script>
+                            $(document).ready(function(){
+                            $( '.ans' ).shuffle();
+                            });
+                        </script>
+
         	        </form>
                 </div>
                 <hr>
